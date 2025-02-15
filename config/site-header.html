@@ -1,0 +1,133 @@
+<!-- Prism.js Dark Theme -->
+<link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css"
+/>
+
+<!-- Load Prism.js with All Languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+<script>
+    Prism.plugins.autoloader.languages_path =
+        "https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/";
+</script>
+
+<!-- Load Inter font from Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet"
+/>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        document.querySelectorAll("pre").forEach((preBlock) => {
+            const button = document.createElement("button");
+            button.classList.add("copy-btn");
+
+            // Add SVG Copy Icon (Dark Theme)
+            button.innerHTML = `
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" viewBox="0 0 16 16">
+          <path d="M10 0H4a2 2 0 0 0-2 2v10h1V2a1 1 0 0 1 1-1h6V0zM5 4a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V4zm1 0v10a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1z"/>
+        </svg>`;
+
+            button.addEventListener("click", function () {
+                const code = preBlock.innerText;
+                navigator.clipboard.writeText(code).then(() => {
+                    button.innerHTML = `
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" viewBox="0 0 16 16">
+              <path d="M13.485 1.929a1.5 1.5 0 0 0-2.12 0L5.5 7.793 3.636 5.929a1.5 1.5 0 1 0-2.121 2.121l2.829 2.829a1.5 1.5 0 0 0 2.121 0l6.364-6.364a1.5 1.5 0 0 0 0-2.122z"/>
+            </svg>`; // Change to "Copied" icon
+
+                    setTimeout(() => {
+                        button.innerHTML = `
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" viewBox="0 0 16 16">
+                <path d="M10 0H4a2 2 0 0 0-2 2v10h1V2a1 1 0 0 1 1-1h6V0zM5 4a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V4zm1 0v10a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1z"/>
+              </svg>`; // Revert back to copy icon
+                    }, 2000);
+                });
+            });
+
+            preBlock.appendChild(button);
+        });
+    });
+</script>
+
+<script>
+    document.addEventListener("scroll", function () {
+        document.querySelectorAll("pre").forEach((block) => {
+            if (block.getBoundingClientRect().top < window.innerHeight - 50) {
+                block.style.opacity = "1";
+                block.style.transform = "translateY(0)";
+            }
+        });
+    });
+</script>
+
+<style>
+    body {
+        font-family: "Inter", sans-serif !important;
+    }
+</style>
+
+<style>
+    /* global dark theme */
+    body,
+    #gh-head {
+        background-color: #121212 !important;
+        color: #e0e0e0 !important;
+    }
+</style>
+
+<style>
+    pre {
+        position: relative;
+        background: #1e1e1e !important;
+        color: #e0e0e0 !important;
+        padding: 15px;
+        border-radius: 8px;
+        overflow-x: auto;
+    }
+
+    /* Dark-themed copy button */
+    .copy-btn {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background: #2c2c2c;
+        border: 1px solid #555;
+        padding: 8px;
+        border-radius: 5px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition:
+            background 0.2s,
+            border 0.2s;
+    }
+
+    .copy-btn:hover {
+        background: #3a3a3a;
+        border: 1px solid #777;
+    }
+
+    .copy-btn svg {
+        width: 16px;
+        height: 16px;
+    }
+</style>
+
+<!-- Animate Code Blocks (Cool Fade-in Effect)  -->
+<style>
+    pre {
+        opacity: 0;
+        transform: translateY(10px);
+        transition:
+            opacity 0.4s ease-out,
+            transform 0.4s ease-out;
+    }
+</style>
